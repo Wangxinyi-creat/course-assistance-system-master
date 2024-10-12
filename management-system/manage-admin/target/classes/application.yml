@@ -1,0 +1,41 @@
+server:
+  port: 8082
+#数据库
+spring:
+  # 环境 dev|prod
+  profiles:
+    active: dev
+  mvc:
+    path-match:
+      matching-strategy: ant_path_matcher
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss  # jSON入参及返回值Data时间格式
+    time-zone: GMT+8                  # 时区
+  servlet:
+    multipart:
+      max-file-size: 10MB
+
+
+#mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true    #驼峰命名
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+# token配置
+token:
+  # 令牌密钥
+  secret: zhedian
+  # 令牌有效期（默认60分钟）
+  expireTime: 60
+
+# 集成阿里云OSS=>不同的服务器，地址不同
+aliyun:
+  oss:
+    endpoint: oss-cn-hangzhou.aliyuncs.com # 对应公网endpoint地址
+    keyId: LTAI5tDzDjA7CLKuFtNknWqU
+    keySecret: sH07Ts2kIckskxE0npfkRZeN9mCNY6
+    bucketName: zhedian-00  #可以代码层面实现
+    datePath: smart-classroom

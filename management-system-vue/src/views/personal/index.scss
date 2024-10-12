@@ -1,0 +1,162 @@
+@import '../../theme/mixins/index.scss';
+
+.personal {
+  width: 100%;
+  overflow: hidden;
+
+  .personal-card-more {
+    float: right;
+    padding: 3px 0;
+    font-size: 13px;
+  }
+
+  .home-card-time {
+    float: right;
+    font-size: 13px;
+    width: 130px;
+    margin-top: -4px;
+  }
+
+  .user-item {
+    height: 198px;
+    display: flex;
+    align-items: center;
+
+    .user-item-left {
+      width: 150px;
+      height: 150px;
+      border-radius: 4px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .user-item-right {
+      flex: 1;
+      padding: 15px;
+
+      .right-title {
+        font-size: 20px;
+      }
+
+      .right-l-v {
+        font-size: 13px;
+        display: flex;
+
+        .right-label {
+          color: var(--prev-color-text-regular);
+          width: 40px;
+        }
+
+        .right-value {
+          flex: 1;
+        }
+      }
+    }
+  }
+
+  .info {
+    height: 198px;
+
+    .info-scroll {
+      height: 100%;
+      overflow: hidden;
+
+      .info-ul {
+        list-style: none;
+
+        .info-item {
+          display: flex;
+          font-size: 13px;
+          color: var(--prev-color-text-regular);
+          height: 28px;
+          line-height: 28px;
+
+          &:hover {
+            color: var(--prev-color-primary);
+            cursor: pointer;
+          }
+
+          .info-item-left {
+            flex: 1;
+            flex-shrink: 0;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+
+          .info-item-right {
+            width: 100px;
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+
+  .personal-edit {
+    .personal-edit-title {
+      position: relative;
+      padding-left: 10px;
+      color: var(--el-text-color-regular);
+
+      &::after {
+        content: '';
+        width: 2px;
+        height: 10px;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--el-color-primary);
+      }
+    }
+
+    .personal-edit-title::before {
+      position: absolute; /*绝对定位*/
+      top: 42%; /*Y轴方向偏移自身高度的50%*/
+      transform: translatey(-40%); /*Y轴方向偏移微调*/
+      left: 0; /*紧靠容器左边缘*/
+      content: ''; /*伪元素需要有内容才能显示*/
+      width: 3px; /*伪元素宽度*/
+      height: 15px; /*伪元素高度*/
+      background-color: #2EB976; /*伪元素颜色*/
+    }
+
+    .personal-edit-safe-box {
+      border-bottom: 1px solid var(--el-border-color-light, #ebeef5);
+      padding: 15px 0;
+
+      .personal-edit-safe-item {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .personal-edit-safe-item-left {
+          flex: 1;
+          overflow: hidden;
+
+          .personal-edit-safe-item-left-label {
+            color: var(--el-text-color-regular);
+            margin-bottom: 5px;
+          }
+
+          .personal-edit-safe-item-left-value {
+            color: var(--el-text-color-secondary);
+            @include text-ellipsis(1);
+            margin-right: 15px;
+          }
+        }
+      }
+
+      &:last-of-type {
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+    }
+  }
+}

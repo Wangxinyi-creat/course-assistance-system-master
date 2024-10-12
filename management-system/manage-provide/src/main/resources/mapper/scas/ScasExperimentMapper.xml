@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhedian.provide.scas.mapper.ScasExperimentMapper">
+
+    <resultMap id="BaseResultMap" type="com.zhedian.provide.scas.entity.ScasExperiment">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="courseId" column="course_id" jdbcType="INTEGER"/>
+            <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+            <result property="experimentTitle" column="experiment_title" jdbcType="VARCHAR"/>
+            <result property="experimentDescription" column="experiment_description" jdbcType="VARCHAR"/>
+            <result property="deadline" column="deadline" jdbcType="TIMESTAMP"/>
+            <result property="answer" column="answer" jdbcType="VARCHAR"/>
+            <result property="uploadUrl" column="upload_url" jdbcType="VARCHAR"/>
+            <result property="uploadDate" column="upload_date" jdbcType="TIMESTAMP"/>
+            <result property="grade" column="grade" jdbcType="DOUBLE"/>
+            <result property="review" column="review" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,course_id,user_name,
+        experiment_title,experiment_description,deadline,
+        answer,upload_url,upload_date,
+        grade,review
+    </sql>
+</mapper>

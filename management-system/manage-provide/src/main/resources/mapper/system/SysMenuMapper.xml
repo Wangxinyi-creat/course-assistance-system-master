@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhedian.provide.system.mapper.SysMenuMapper">
+
+    <resultMap id="BaseResultMap" type="com.zhedian.provide.system.entity.SysMenu">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="menuName" column="menu_name" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="path" column="path" jdbcType="VARCHAR"/>
+        <result property="component" column="component" jdbcType="VARCHAR"/>
+        <result property="elIcon" column="el_icon" jdbcType="VARCHAR"/>
+        <result property="isLink" column="is_link" jdbcType="VARCHAR"/>
+        <result property="isIframe" column="is_iframe" jdbcType="TINYINT"/>
+        <result property="menuType" column="menu_type" jdbcType="INTEGER"/>
+        <result property="parentId" column="parent_id" jdbcType="INTEGER"/>
+        <result property="permission" column="permission" jdbcType="VARCHAR"/>
+        <result property="sortId" column="sort_id" jdbcType="INTEGER"/>
+        <result property="showFlag" column="show_flag" jdbcType="INTEGER"/>
+        <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,menu_name,name,
+        path,component,el_icon,
+        is_link,is_iframe,menu_type,
+        parent_id,permission,sort_id,
+        show_flag,create_by,create_time,
+        update_by,update_time
+    </sql>
+
+    <select id="getMenuListTreeByUser" resultType="com.zhedian.provide.system.entity.SysMenu">
+        SELECT DISTINCT m.*
+        FROM sys_user u
+        LEFT JOIN sys_user_role ur ON u.user_name = ur.user_name
+        LEFT JOIN sys_role_menu rm ON ur.role_id = rm.role_id
+        LEFT JOIN sys_menu m ON rm.menu_id = m.id
+        WHERE u.user_name = #{userName}
+        AND TRIM(m.id) != ''
+        <if test="menuType!=null and menuType!=''">
+            AND m.menu_type=#{menuType}
+        </if>
+        ORDER BY sort_id ASC
+    </select>
+</mapper>

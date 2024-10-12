@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhedian.provide.scas.mapper.ScasCourseResourceMapper">
+
+    <resultMap type="com.zhedian.provide.scas.entity.ScasCourseResource" id="ScasCourseResourceResult">
+            <result property="id" column="id"/>
+            <result property="courseId" column="course_id"/>
+            <result property="resourceName" column="resource_name"/>
+            <result property="resourceDescription" column="resource_description"/>
+            <result property="resourceUrl" column="resource_url"/>
+            <result property="uploadDate" column="upload_date"/>
+            <result property="createBy" column="create_by"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateBy" column="update_by"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+</mapper>
